@@ -23,7 +23,11 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
     Array.from(form.elements).forEach((input) => {
         if (input.type !== "submit") {
-            addItemToStorage(input.id, input.value);
+            if (input.type === 'checkbox') {
+                addItemToStorage(input.id, input.checked ? 'true' : 'false');
+            } else {
+                addItemToStorage(input.id, input.value);
+            }
             console.log(input.id);
         }
     });
