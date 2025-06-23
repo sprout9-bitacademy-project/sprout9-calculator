@@ -6,27 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impact calculator</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    
-        .vraagBlok {
-            display: flex;
-            flex-direction: column;
-        }
-    
-        .vraagBlok * {
-            margin: 5px;
-        }
-    </style>
 </head>
 
 <body>
-<h1 style="text-align: center;">Sprout9 Impact calculator</h1>
-<div id="containerForm">
-    <form action="index.html" method="post">
-        <div class="vraagBlok">
+    <div id="containerForm">
+    <h1>Sprout9 Impact calculator</h1>
+    <form action="index.html" method="post" id="impactCalculatorForm">
+        <section class="vraagBlok">
             <h2>Wie ben jij?</h2>
 
             <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam">
@@ -35,40 +21,40 @@
             <input type="text" name="functie" id="functie" placeholder="Functie">
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h2>Personeelssituatie afdeling</h2>
 
-            <label for="loondienstFTE">FTE in loondienst</label>
-            <input type="number" name="loondienstFTE" id="loondienstFTE">
+            <label for="personeel-loondienstFTE">FTE in loondienst</label>
+            <input type="number" name="personeel-loondienstFTE" id="personeel-loondienstFTE">
 
-            <label for="flexibelFTE">FTE in flexibele schil</label>
-            <input type="number" name="flexibelFTE" id="flexibelFTE">
+            <label for="personeel-flexibelFTE">FTE in flexibele schil</label>
+            <input type="number" name="personeel-flexibelFTE" id="personeel-flexibelFTE">
 
-            <label for="gemiddeldeUurloonFTE">Gemiddelde uurloon van werknemers in loondienst</label>
-            <input type="number" name="gemiddeldeUurloonFTE" id="gemiddeldeUurloonFTE">
+            <label for="personeel-gemiddeldeUurloonFTE">Gemiddelde uurloon van werknemers in loondienst</label>
+            <input type="number" name="personeel-gemiddeldeUurloonFTE" id="personeel-gemiddeldeUurloonFTE">
 
-            <label for="gemiddeldeKostenFlexibel">Gemiddelde kosten per uur van flexibele schil</label>
-            <input type="number" name="gemiddeldeKostenFlexibel" id="gemiddeldeKostenFlexibel">
+            <label for="personeel-gemiddeldeKostenFlexibel">Gemiddelde kosten per uur van flexibele schil</label>
+            <input type="number" name="personeel-gemiddeldeKostenFlexibel" id="personeel-gemiddeldeKostenFlexibel">
 
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h2>Demografie</h2>
 
-            <label for="dertigMinFTE">Aantal FTE jonger dan 30</label>
-            <input type="number" name="dertigMinFTE" id="dertigMinFTE">
+            <label for="demografie-dertigMinFTE">Aantal FTE jonger dan 30</label>
+            <input type="number" name="demografie-dertigMinFTE" id="demografie-dertigMinFTE">
 
-            <label for="dertig-vijfEnVeertigFTE">Aantal FTE tussen 30-45</label>
-            <input type="number" name="dertig-vijfEnVeertigFTE" id="dertig-vijfEnVeertigFTE">
+            <label for="demografie-dertigTotVijfEnVeertigFTE">Aantal FTE tussen 30-45</label>
+            <input type="number" name="demografie-dertigTotVijfEnVeertigFTE" id="demografie-dertigTotVijfEnVeertigFTE">
 
-            <label for="vijfEnVeertig-zestigFTE">Aantal FTE tussen 45-60</label>
-            <input type="number" name="vijfEnVeertig-zestigFTE" id="vijfEnVeertig-zestigFTE">
+            <label for="demografie-vijfEnVeertigTotZestigFTE">Aantal FTE tussen 45-60</label>
+            <input type="number" name="demografie-vijfEnVeertigTotZestigFTE" id="demografie-vijfEnVeertigTotZestigFTE">
 
-            <label for="zestigPlusFTE">Aantal FTE ouder dan 60</label>
-            <input type="number" name="zestigPlusFTE" id="zestigPlusFTE">
+            <label for="demografie-zestigPlusFTE">Aantal FTE ouder dan 60</label>
+            <input type="number" name="demografie-zestigPlusFTE" id="demografie-zestigPlusFTE">
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h2>Taken op afdeling (in uren per week)</h2>
             <h3>Contractbeheer</h3>
 
@@ -82,7 +68,7 @@
             <input type="number" name="contracten-dataAnalyseManagement" id="contracten-dataAnalyseManagement">
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h3>Inkoop</h3>
 
             <label for="inkoop-controleren">Inkoopadministratie, bestellingen en inkooporders controleren</label>
@@ -102,7 +88,7 @@
 
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h3>Leveranciersmanagement</h3>
 
             <label for="leveranciers-relaties">Onderhouden van relaties met leverancier</label>
@@ -115,7 +101,7 @@
             <input type="number" name="leveranciers-monitorenLeveranciers" id="leveranciers-monitorenLeveranciers">
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h3>Facturatie / Boekhouding</h3>
 
             <label for="facturatie-verwerkenFacturen">Verwerken van inkomende en uitgaande facturen</label>
@@ -124,14 +110,13 @@
             <label for="facturatie-boekenMonitorenCashflow">Boeken van betalingen en het monitoren van cashflow</label>
             <input type="number" name="facturatie-boekenMonitorenCashflow" id="facturatie-boekenMonitorenCashflow">
 
-            <label for="Facturatie-verwerkenCrediteurAdministratie">Verwerken van crediteuren en
+            <label for="facturatie-verwerkenCrediteurAdministratie">Verwerken van crediteuren en
                 debiteurenadministratie</label>
-            <input type="number" name="Facturatie-verwerkenCrediteurAdministratie"
-                id="Facturatie-verwerkenCrediteurAdministratie">
+            <input type="number" name="facturatie-verwerkenCrediteurAdministratie" id="facturatie-verwerkenCrediteurAdministratie">
 
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h3>Voorraadbeheer / Logistiek</h3>
 
             <label for="logistiek-monitorenBestellenVoorraad">
@@ -149,18 +134,18 @@
         </div>
 
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h3>Overig</h3>
 
-            <label for="overigNaam">Overig, namelijk</label>
-            <input type="text" name="overigNaam" id="overigNaam">
+            <label for="overigBeschrijving">Overig, namelijk</label>
+            <input type="text" name="overigBeschrijving" id="overigBeschrijving">
 
             <label for="overigeUren">Aantal uren overig</label>
             <input type="number" name="overigeUren" id="overigeUren">
 
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h2>Aannames</h2>
 
             <label for="aannames-vakantieGeld">Percentage vakantiegeld</label>
@@ -185,7 +170,7 @@
             <input type="number" name="aannames-urenFTE" id="aannames-urenFTE" value="36">
         </div>
 
-        <div class="vraagBlok">
+        <section class="vraagBlok">
             <h2>Waar mogen we de uitkomst heen sturen?</h2>
 
             <input type="email" name="email" id="email" placeholder="Emailadres">
@@ -197,7 +182,7 @@
                 deze met
                 jou, zodat je je kan vergelijken met de rest van onze respondenten.
             </label>
-            <input type="checkbox" name="toestemmingAnalyse" id="toestemmingAnalyse">
+            <input type="checkbox" name="toestemmingAnalyse" id="toestemmingAnalyse" required>
 
         </div>
 
@@ -205,6 +190,7 @@
     </form>
 </div>
 
+<script src="script.js"></script>
 </body>
 
 </html>
