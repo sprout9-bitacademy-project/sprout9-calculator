@@ -6,9 +6,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impact calculator</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    
+        .vraagBlok {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .vraagBlok * {
+            margin: 5px;
+        }
+    </style>
 </head>
 
 <body>
+<h1 style="text-align: center;">Sprout9 Impact calculator</h1>
+<div id="containerForm">
+    <form action="index.html" method="post">
+        <div class="vraagBlok">
+            <h2>Wie ben jij?</h2>
+
+            <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam">
+            <input type="text" name="achternaam" id="achternaam" placeholder="Achternaam">
+            <input type="text" name="bedrijf" id="bedrijf" placeholder="Bedrijf">
+            <input type="text" name="functie" id="functie" placeholder="Functie">
+        </div>
+
+        <div class="vraagBlok">
+            <h2>Personeelssituatie afdeling</h2>
+
+            <label for="loondienstFTE">FTE in loondienst</label>
+            <input type="number" name="loondienstFTE" id="loondienstFTE">
+
+            <label for="flexibelFTE">FTE in flexibele schil</label>
+            <input type="number" name="flexibelFTE" id="flexibelFTE">
+
+            <label for="gemiddeldeUurloonFTE">Gemiddelde uurloon van werknemers in loondienst</label>
+            <input type="number" name="gemiddeldeUurloonFTE" id="gemiddeldeUurloonFTE">
+
+            <label for="gemiddeldeKostenFlexibel">Gemiddelde kosten per uur van flexibele schil</label>
+            <input type="number" name="gemiddeldeKostenFlexibel" id="gemiddeldeKostenFlexibel">
+
+        </div>
+
+        <div class="vraagBlok">
+            <h2>Demografie</h2>
+
+            <label for="dertigMinFTE">Aantal FTE jonger dan 30</label>
+            <input type="number" name="dertigMinFTE" id="dertigMinFTE">
+
+            <label for="dertig-vijfEnVeertigFTE">Aantal FTE tussen 30-45</label>
+            <input type="number" name="dertig-vijfEnVeertigFTE" id="dertig-vijfEnVeertigFTE">
+
+            <label for="vijfEnVeertig-zestigFTE">Aantal FTE tussen 45-60</label>
+            <input type="number" name="vijfEnVeertig-zestigFTE" id="vijfEnVeertig-zestigFTE">
+
+            <label for="zestigPlusFTE">Aantal FTE ouder dan 60</label>
+            <input type="number" name="zestigPlusFTE" id="zestigPlusFTE">
+        </div>
+
+        <div class="vraagBlok">
+            <h2>Taken op afdeling (in uren per week)</h2>
+            <h3>Contractbeheer</h3>
+
+            <label for="contracten-implementatie">Implementatie nieuwe contracten</label>
+            <input type="number" name="contracten-implementatie" id="contracten-implementatie">
+
+            <label for="contracten-beheerContracten">Beheer en onderhoud van contracten met leveranciers</label>
+            <input type="number" name="contracten-beheerContracten" id="contracten-beheerContracten">
+
+            <label for="contracten-dataAnalyseManagement">Contractdata-analyse en informatiemanagement</label>
+            <input type="number" name="contracten-dataAnalyseManagement" id="contracten-dataAnalyseManagement">
+        </div>
+
+        <div class="vraagBlok">
+            <h3>Inkoop</h3>
+
+            <label for="inkoop-controleren">Inkoopadministratie, bestellingen en inkooporders controleren</label>
+            <input type="number" name="inkoop-controleren" id="inkoop-controleren">
+
+            <label for="inkoop-kleineTrajecten">
+                Kleine inkooptrajecten, verwerving onderhandse gunningen en
+                marktbenadering
+            </label>
+            <input type="number" name="inkoop-kleineTrajecten" id="inkoop-kleineTrajecten">
+
+            <label for="inkoop-complexeTrajecten">
+                Complexe inkooptrajecten, Marktconsultaties, Europese
+                aanbestedingen.
+            </label>
+            <input type="number" name="inkoop-complexeTrajecten" id="inkoop-complexeTrajecten">
+
+        </div>
+
+        <div class="vraagBlok">
+            <h3>Leveranciersmanagement</h3>
+
+            <label for="leveranciers-relaties">Onderhouden van relaties met leverancier</label>
+            <input type="number" name="leveranciers-relaties" id="leveranciers-relaties">
+
+            <label for="leveranciers-nieuweLeveranciers">Evaluatie en selectie nieuwe leveranciers</label>
+            <input type="number" name="leveranciers-nieuweLeveranciers" id="leveranciers-nieuweLeveranciers">
+
+            <label for="leveranciers-monitorenLeveranciers">Monitoren van prestaties van leveranciers (KPI)</label>
+            <input type="number" name="leveranciers-monitorenLeveranciers" id="leveranciers-monitorenLeveranciers">
+        </div>
+
+        <div class="vraagBlok">
+            <h3>Facturatie / Boekhouding</h3>
+
+            <label for="facturatie-verwerkenFacturen">Verwerken van inkomende en uitgaande facturen</label>
+            <input type="number" name="facturatie-verwerkenFacturen" id="facturatie-verwerkenFacturen">
+
+            <label for="facturatie-boekenMonitorenCashflow">Boeken van betalingen en het monitoren van cashflow</label>
+            <input type="number" name="facturatie-boekenMonitorenCashflow" id="facturatie-boekenMonitorenCashflow">
+
+            <label for="Facturatie-verwerkenCrediteurAdministratie">Verwerken van crediteuren en
+                debiteurenadministratie</label>
+            <input type="number" name="Facturatie-verwerkenCrediteurAdministratie"
+                id="Facturatie-verwerkenCrediteurAdministratie">
+
+        </div>
+
+        <div class="vraagBlok">
+            <h3>Voorraadbeheer / Logistiek</h3>
+
+            <label for="logistiek-monitorenBestellenVoorraad">
+                Monitoren van voorraadniveaus en bestellen van
+                nieuwevoorraad
+            </label>
+            <input type="number" name="logistiek-monitorenBestellenVoorraad" id="logistiek-monitorenBestellenVoorraad">
+
+            <label for="logistiek-planningLeveringen">Logistieke planning en beheer van leveringen</label>
+            <input type="number" name="logistiek-planningLeveringen" id="logistiek-planningLeveringen">
+
+            <label for="logistiek-optimaliserenProcessen">Optimaliseren van voorraadprocessen</label>
+            <input type="number" name="logistiek-optimaliserenProcessen" id="logistiek-optimaliserenProcessen">
+
+        </div>
+
+
+        <div class="vraagBlok">
+            <h3>Overig</h3>
+
+            <label for="overigNaam">Overig, namelijk</label>
+            <input type="text" name="overigNaam" id="overigNaam">
+
+            <label for="overigeUren">Aantal uren overig</label>
+            <input type="number" name="overigeUren" id="overigeUren">
+
+        </div>
+
+        <div class="vraagBlok">
+            <h2>Aannames</h2>
+
+            <label for="aannames-vakantieGeld">Percentage vakantiegeld</label>
+            <input type="number" name="aannames-vakantieGeld" id="aannames-vakantieGeld" value="8">
+
+            <label for="aannames-vakantieDagen">Vakantiedagen per jaar</label>
+            <input type="number" name="aannames-vakantieDagen" id="aannames-vakantieDagen" value="25">
+
+            <label for="aannames-dertiendeMaand">13e maand</label>
+            <input type="checkbox" name="aannames-dertiendeMaand" id="aannames-dertiendeMaand">
+
+            <label for="aannames-jaarlijksVerloop">Jaarlijks verlooppercentage</label>
+            <input type="number" name="aannames-jaarlijksVerloop" id="aannames-jaarlijksVerloop" value="10">
+
+            <label for="aannames-verzuim">Verzuimpercentage</label>
+            <input type="number" name="aannames-verzuim" id="aannames-verzuim" value="6">
+
+            <label for="aannames-recruitmentKosten">Recruitmentkosten als percentage van het jaarloon</label>
+            <input type="number" name="aannames-recruitmentKosten" id="aannames-recruitmentKosten" value="15">
+
+            <label for="aannames-urenFTE">Aantal uren in een FTE</label>
+            <input type="number" name="aannames-urenFTE" id="aannames-urenFTE" value="36">
+        </div>
+
+        <div class="vraagBlok">
+            <h2>Waar mogen we de uitkomst heen sturen?</h2>
+
+            <input type="email" name="email" id="email" placeholder="Emailadres">
+
+            <input type="tel" name="telefoonnummer" id="telefoonnummer" placeholder="Telefoonnummer">
+
+            <label for="toestemmingAnalyse">
+                Sprout9 mag gebruik maken van jouw anonieme gegevens om een marktanalyse te maken. Bij akkoord delen we
+                deze met
+                jou, zodat je je kan vergelijken met de rest van onze respondenten.
+            </label>
+            <input type="checkbox" name="toestemmingAnalyse" id="toestemmingAnalyse">
+
+        </div>
+
+        <input type="submit" value="Verzenden">
+    </form>
+</div>
 
 </body>
 
