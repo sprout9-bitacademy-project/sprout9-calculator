@@ -13,10 +13,11 @@
             <h1 class="text-white text-2xl font-bold">Sprout9 Calculator</h1>
         </div>
     </nav>
-    <div class="container place-items-center ">
         <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-4">Wie ben jij?</h2>
-            <form id="calculator-form">
+            <div class="container place-items-center p-6">
+                <h2 class="text-xl font-semibold mb-4">Calculator</h2>
+                <p class="mb-4">Wie ben jij</p>
+                <form id="calculator-form">
 
                 <div class="mb-4">
                     <label for="voornaam" class="block text-gray-700">Voornaam</label>
@@ -38,12 +39,67 @@
                     <label for="functie" class="block text-gray-700">Functie</label>
                     <input type="text" id="functie" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                 </div>
+                <div id="resultaat" class="mt-4 text-lg"> </div>
 
-            </form>
-            <div id="resultaat" class="mt-4 text-lg"></div>
+                </form>
+            </div>
+
+        <div class="container place-items-center p-6 mt-6">
+            <h2 class="text-xl font-semibold mb-4">Personeelssituatie</h2>
+                <form id="personeelSituatie-form">
+                    <div class="mb-4">
+                        <label for="fteInLoonDienst" class="block text-gray-700">FTE in loondienst</label>
+                        <input type="number" id="fteInLoonDienst" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                        <label for="fteInFlexibeleSchil" class="block text-gray-700"> FTE in flexibele schil </label>
+                        <input type="number" id="fteInFlexibeleSchil" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                        <label for="gemiddeldUurloon" class="block text-gray-700">Gemiddeld uurloon van werknemers in loondienst</label>
+                        <input type="number" id="gemiddeldUurloon" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                        <label for="gemiddeldKosten" class="block text-gray-700">Gemiddelde kosten per uur van flexibele schil</label>
+                        <input type="number" id="gemiddeldKosten" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    </div>
+                </form>
         </div>
+
+        <div class="container place-items-center mt-6 p-6">
+            <h2 class="text-xl font-semibold mb-4">Demografie</h2>
+            <form id="demografie-form">
+
+                <div class="mb-4">
+                    <label for="aantalJongerDan30" class="block text-gray-700">Aantal jonger dan 30</label>
+                    <input type="number" id="aantalJongerDan30" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="aantalTussen30-45" class="block text-gray-700">Aantal tussen 30-45</label>
+                    <input type="number" id="aantalTussen30-45" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="aantalTussen45-60" class="block text-gray-700">Aantal FTE tussen 45-60</label>
+                    <input type="number" id="aantalTussen45-60" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+                    
+                <div class="mb-4">
+                    <label for="aantalOuderDan60" class="block text-gray-700">Aantal FTE ouder dan 60</label>
+                    <input type="number" id="aantalOuderDan60" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+
+
+
+        </div>
+
+
+        
+
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
         <button id="reset-button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Reset</button>
+       
+        
+
+
+
+
+        
     </div>
     
 </body>
