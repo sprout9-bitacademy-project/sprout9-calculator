@@ -4,8 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprout9|Calculator</title>
+    <script src="script.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>  
 </head>
 <body>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold">Sprout9 Calculator</h1>
+        </div>
+    </nav>
+    <div class="container place-items-center ">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Wie ben jij?</h2>
+            <form id="calculator-form">
+
+                <div class="mb-4">
+                    <label for="voornaam" class="block text-gray-700">Voornaam</label>
+                    <input type="text" id="voornaam" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="achternaam" class="block text-gray-700">Achternaam</label>
+                    <input type="text" id="achternaam" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+                
+
+                <div class="mb-4">
+                    <label for="bedrijf" class="block text-gray-700">Bedrijf</label>
+                    <input type="text" id="bedrijf" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="functie" class="block text-gray-700">Functie</label>
+                    <input type="text" id="functie" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+
+            </form>
+            <div id="resultaat" class="mt-4 text-lg"></div>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
+        <button id="reset-button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Reset</button>
+    </div>
     
 </body>
 </html>
