@@ -15,10 +15,10 @@
     </nav>
         <div class="bg-white place-items-center p-6 rounded-lg shadow-md">
 
+            <form id="calculator-form">
             <div class="container place-items-center p-6">
                 <h2 class="text-xl font-semibold mb-4">Calculator</h2>
                 <p class="mb-4">Wie ben jij?</p>
-                <form id="calculator-form">
 
                 <div class="mb-4">
                     <label for="voornaam" class="block text-gray-700">Voornaam</label>
@@ -41,12 +41,10 @@
                     <input type="text" id="functie" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                 </div>
                 <div id="resultaat" class="mt-4 text-lg"> </div>
-                </form>
             </div>
 
         <div class="container place-items-center p-6 mt-6">
             <h2 class="text-xl font-semibold mb-4">Personeelssituatie</h2>
-                <form id="personeelSituatie-form">
                     <div class="mb-4">
                         <label for="fteInLoonDienst" class="block text-gray-700">FTE in loondienst</label>
                         <input type="number" id="fteInLoonDienst" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
@@ -57,12 +55,10 @@
                         <label for="gemiddeldKosten" class="block text-gray-700">Gemiddelde kosten per uur van flexibele schil</label>
                         <input type="number" id="gemiddeldKosten" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                     </div>
-                </form>
         </div>
 
         <div class="container place-items-center mt-6 p-6">
             <h2 class="text-xl font-semibold mb-4">Demografie</h2>
-            <form id="demografie-form">
 
                 <div class="mb-4">
                     <label for="aantalJongerDan30" class="block text-gray-700">Aantal jonger dan 30</label>
@@ -83,13 +79,11 @@
                     <label for="aantalOuderDan60" class="block text-gray-700">Aantal FTE ouder dan 60</label>
                     <input type="number" id="aantalOuderDan60" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                 </div>
-            </form>
 
         </div>
         
         <div class="container place-items-center mt-6 p-6">
             <h2 class="text-xl font-semibold mb-4">Taken op afdeling (in uren)</h2>
-            <form id="takenOpAfdeling-form">
                 <h2 class="text-xl font-semibold mb-4 mt-6">Contractbeheer</h2>
             
                 <label for="implementatieNieuweContracten" class="block text-gray-700">Implementatie nieuwe contracten</label>
@@ -117,8 +111,11 @@
                 <label for="onderhoudenVanRelatiesMetLeveranciers" class="block text-gray-700">Onderhouden van relaties met leveranciers</label>
                 <input type="number" id="onderhoudenVanRelatiesMetLeveranciers" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-                <label for="evaluatieEn SelectieNieuweLEveranciers" class="block text-gray-700">Evaluatie en selectie van nieuwe leveranciers</label>
-                <input type="number" id="evaluatieEnSelectieNieuweLeveranciers" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                <label for="evaluatieSelectieNieuweLeveranciers" class="block text-gray-700">
+                    Evaluatie en selectie van nieuweleveranciers
+                </label>
+                <input type="number" id="evaluatieSelectieNieuweLeveranciers"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
                 <label for="monitorenVanPrestatiesVanLeveranciers" class="block text-gray-700">Monitoren van prestaties van leveranciers (KPI)</label>
                 <input type="number" id="monitorenVanPrestatiesVanLeveranciers" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
@@ -144,25 +141,22 @@
                 <input type="number" id="LogistiekePlanningEnBeheerVanLeveringen" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
                 <label for="optimaliserenVanVoorraadprocessen" class="block text-gray-700">Optimaliseren van voorraadprocessen</label>
-                <input type="number" id="optimaliserenVanVoorraadprocessen" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
-            </form>
+                <input type="number" id="optimaliserenVanVoorraadprocessen" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                    required>
         </div>
 
         <div class="container place-items-center mt-6 p-6">
             <h2 class="text-xl font-semibold mb-4">Overig</h2>
-            <form id="overig-form " class="flex gap-4">
 
                 <label for="overig-namelijk" class="block text -gray-700">Overige taken (specificeer)</label>
                 <input type="text" id="overig-namelijk" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                 
                 <label for="overig-uren" class="block text-gray-700">Aantal uren overig</label>
                 <input type="number" id="overig-uren" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
-            </form>
         </div>
 
         <div class="container place-items-center mt-6 p-6">
             <h2 class="text-xl font-semibold mb-4">Aannames</h2>
-            <form id="aannames-form">
                 <div class="mb-4">
 
                     <label for="checkbox-aannames" class="inline-flex items-center mt-2">
@@ -187,13 +181,11 @@
                     <label for="aantalUrenInEenFte" class="block text-gray-700 mt-4">Aantal uren in een FTE</label>
                     <input type="number" id="aantalUrenInEenFte" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                 </div>
-            </form>
         </div>
 
         <div class="container place-items-center mt-6 p-6">
             <h1 class="text-xl font-semibold mb-4">Waar mogen wij de uitkomst heen sturen?</h2>
             <div id="resultaat" class="mt-4 text-lg">
-                <form id="email-form">
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700">E-mailadres</label>
                         <input type="email" id="email" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
@@ -202,13 +194,12 @@
                         <label for="telefoon" class="block text-gray-700">Telefoonnummer</label>
                         <input type="tel" id="telefoon" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
                     </div>
-                </form>
-            </div>
-
-
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
-        <button id="reset-button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Reset</button>
-       
+                </div>
+                
+                
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
+                <button id="reset-button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Reset</button>
+            </form>
         
 
             
