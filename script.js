@@ -1,3 +1,14 @@
+function addItemToStorage(key, value) {
+    localStorage.setItem(key, value);
+    console.log(`Item toegevoegd aan localStorage: ${key}`);
+}
+
+function removeAllItemsFromStorage() {
+    localStorage.clear();
+}
+
+removeAllItemsFromStorage();
+
 document.getElementById('calculator-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -7,7 +18,7 @@ document.getElementById('calculator-form').addEventListener('submit', function(e
     const functie = document.getElementById('functie').value;
 
     const gegevens = { voornaam, achternaam, bedrijf, functie};
-    localStorage.setItem('formulierGegevens', JSON.stringify(gegevens));
+    addItemToStorage('formulierGegevens', JSON.stringify(gegevens));
 
     document.getElementById('resultaat').textContent = 'opgeslagen';
 });
@@ -36,9 +47,9 @@ forms.forEach(form => {
             const eventType = input.type === 'checkbox' ? 'change' : 'input';
             input.addEventListener(eventType, () => {
                 if (input.type === 'checkbox') {
-                    localStorage.setItem(input.id, input.checked ? 'true' : 'false');
+                    addItemToStorage(input.id, input.checked ? 'true' : 'false');
                 } else {
-                    localStorage.setItem(input.id, input.value);
+                    addItemToStorage(input.id, input.value);
                 }
             });
         }
