@@ -5,21 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprout9|Calculator</title>
-    <script src="resultPage.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="ResultPageChart.js" defer></script>
+    <script type="module" src="resultPage.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
 
 <body>
-    <nav class="bg-gray-800 p-4">
+    <!-- <nav class="bg-gray-800 p-4">
         <div class="container mx-auto">
             <h1 class="text-white text-2xl font-bold">Sprout9 Calculator</h1>
         </div>
-    </nav>
-
-    <div class="bg-white place-items-center p-6 rounded-lg shadow-md">
-
+    </nav> -->
+    <!-- <div class="bg-white place-items-center p-6 rounded-lg shadow-md"> -->
+    <h1 id="resultaten-h1">Resultaten</h1>
+    <div id="demografie-chart-container">
+        <h2>Demografie</h2>
+        <canvas id="demografie-chart"></canvas>
+        <div id="demografie-uitleg-container"></div>
     </div>
 
+    <div id="taken-uren-chart-container">
+        <h2>Taken uren</h2>
+        <canvas id="taken-uren-chart"></canvas>
+        <div id="demografie-uitleg-container"></div>
+    </div>
+
+    <button id="return-btn">Formulier opnieuw invullen</button>
+    <button id="create-pdf-btn">Genereer PDF</button>
 </body>
 
 </html>

@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#demografie-chart-container {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 100px;
+}
+
+#taken-uren-chart-container {
+    width: 600px;
+    margin-bottom: 100px;
+}

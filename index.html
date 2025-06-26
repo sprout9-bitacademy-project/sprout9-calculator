@@ -83,7 +83,7 @@
         </div>
         
         <div class="container place-items-center mt-6 p-6">
-            <h2 class="text-xl font-semibold mb-4">Taken op afdeling (in uren)</h2>
+            <h2 class="text-xl font-semibold mb-4">Taken op afdeling (in uren per week)</h2>
                 <h2 class="text-xl font-semibold mb-4 mt-6">Contractbeheer</h2>
             
                 <label for="implementatieNieuweContracten" class="block text-gray-700">Implementatie nieuwe contracten</label>
@@ -149,10 +149,10 @@
             <h2 class="text-xl font-semibold mb-4">Overig</h2>
 
                 <label for="overig-namelijk" class="block text -gray-700">Overige taken (specificeer)</label>
-                <input type="text" id="overig-namelijk" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                <input type="text" id="overig-namelijk" class="mt-1 block w-full p-2 border border-gray-300 rounded">
                 
                 <label for="overig-uren" class="block text-gray-700">Aantal uren overig</label>
-                <input type="number" id="overig-uren" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                <input type="number" id="overig-uren" class="mt-1 block w-full p-2 border border-gray-300 rounded">
         </div>
 
         <div class="container place-items-center mt-6 p-6">
@@ -160,26 +160,32 @@
                 <div class="mb-4">
 
                     <label for="checkbox-aannames" class="inline-flex items-center mt-2">
-                        <input type="checkbox" id="checkbox-aannames" class="form-checkbox h-5 w-5 text-blue-600" required>
+                        <input type="checkbox" id="checkbox-aannames" class="form-checkbox h-5 w-5 text-blue-600">
                         <span class="ml-2 text-gray-700">13e maand</span></label>
 
                     <label for="percentageVakantiegeld" class="block text-gray-700">Percentage vakantegeld</label>
-                    <input type="number" id="percentageVakantiegeld" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <input type="number" id="percentageVakantiegeld" class="mt-1 block w-full p-2 border border-gray-300 rounded" value="8"
+                        required>
 
                     <label for="vakntiedagenPerJaar" class="block text-gray-700">Vakantiedagen per jaar</label>
-                    <input type="number" id="vakntiedagenPerJaar" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <input type="number" id="vakntiedagenPerJaar" class="mt-1 block w-full p-2 border border-gray-300 rounded" value="25"
+                        required>
                     
                     <label for="jaarlijksVerlooppercentage" class="block text-gray-700 mt-4">Jaarlijks verlooppercentage</label>
-                    <input type="number" id="jaarlijksVerlooppercentage" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <input type="number" id="jaarlijksVerlooppercentage" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                        value="10" required>
 
                     <label for="verzuimpercentage" class="block text-gray-700 mt-4">Verzuimpercentage</label>
-                    <input type="number" id="verzuimpercentage" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <input type="number" id="verzuimpercentage" class="mt-1 block w-full p-2 border border-gray-300 rounded" value="6"
+                        required>
 
                     <label for="recruitmentkostenAlsPercentageVanHetJaarloon" class="block text-gray-700 mt-4">Recruitmentkosten als percentage van het jaarsalaris</label>
-                    <input type="number" id="recruitmentkostenAlsPercentageVanHetJaarloon" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>   
+                    <input type="number" id="recruitmentkostenAlsPercentageVanHetJaarloon"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="15" required>
 
                     <label for="aantalUrenInEenFte" class="block text-gray-700 mt-4">Aantal uren in een FTE</label>
-                    <input type="number" id="aantalUrenInEenFte" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <input type="number" id="aantalUrenInEenFte" class="mt-1 block w-full p-2 border border-gray-300 rounded" value="36"
+                        required>
                 </div>
         </div>
 
@@ -197,10 +203,10 @@
                 </div>
                 
                 
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
+                <button type="submit" id="submit-form"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
+                </form>
                 <button id="reset-button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Reset</button>
-            </form>
-        
 
             
 
