@@ -11,3 +11,48 @@ document.getElementById('calculator-form').addEventListener('submit', function(e
 
     document.getElementById('resultaat').textContent = 'opgeslagen';
 });
+
+const forms = document.querySelectorAll('form');
+
+forms.forEach(form => {
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        Array.from(form.elements).forEach((input) => {
+            if (input.type !== "submit") {
+                if (input.type === 'checkbox') {
+                    addItemToStorage(input.id, input.checked ? 'true' : 'false');
+                } else {
+                    addItemToStorage(input.id, input.value);
+                }
+                console.log(input.id);
+            }
+        });
+    });
+
+    // Sla direct wijzigingen in de inputvelden op in localStorage
+    Array.from(form.elements).forEach((input) => {
+        if (input.type !== "submit") {
+            const eventType = input.type === 'checkbox' ? 'change' : 'input';
+            input.addEventListener(eventType, () => {
+                if (input.type === 'checkbox') {
+                    localStorage.setItem(input.id, input.checked ? 'true' : 'false');
+                } else {
+                    localStorage.setItem(input.id, input.value);
+                }
+            });
+        }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        Array.from(form.elements).forEach((input) => {
+            if (input.type !== "submit") {
+                if (input.type === 'checkbox') {
+                    input.checked = localStorage.getItem(input.id) === 'true';
+                } else if (localStorage.getItem(input.id) !== null) {
+                    input.value = localStorage.getItem(input.id);
+                }
+            }
+        });
+    });
+});
