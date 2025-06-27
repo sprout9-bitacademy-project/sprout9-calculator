@@ -48,7 +48,7 @@ demografieChart.plotChart();
 
 // Taken uren diagram
 const contractBeheerTotaal = sumFromStorage(['implementatieNieuweContracten', 'beheerEnOnderhoudContractenLeveranciers', 'contractdataAnalyseEnInformatiemanagement']);
-const inkoopTotaal = sumFromStorage(['inkoopadministratieBestellingenEnInkoopordersControleren', 'kleineInkooptrajectenVerwervingOnderhandseGunningEnMarktbenadering', 'kleineInkooptrajectenVerwervingOnderhandseGunningEnMarktbenadering']);
+const inkoopTotaal = sumFromStorage(['inkoopadministratieBestellingenEnInkoopordersControleren', 'kleineInkooptrajectenVerwervingOnderhandseGunningEnMarktbenadering', 'complexeInkooptrajectenMarktconsultatiesEuropeseAanbestedingen']);
 const leveranciersmanagementTotaal = sumFromStorage(['onderhoudenVanRelatiesMetLeveranciers', 'evaluatieSelectieNieuweLeveranciers', 'monitorenVanPrestatiesVanLeveranciers']);
 const facturatieBoekhoudingTotaal = sumFromStorage(['verwerkenVanInkomendeEnUitgaandeFacturen', 'boekenVanBetalingenEnHetMonitorenVanCashflow', 'verwerkenVanCrediturenEnDebiteurenadministratie']);
 const voorraadbeheerLogistiekTotaal = sumFromStorage(['monitorenVanVoorraadniveausEnBestellemVanNieuweVoorraad', 'LogistiekePlanningEnBeheerVanLeveringen', 'optimaliserenVanVoorraadprocessen']);
@@ -56,7 +56,7 @@ const voorraadbeheerLogistiekTotaal = sumFromStorage(['monitorenVanVoorraadnivea
 // Chart variabelen
 const takenUrenChartCanvas = document.getElementById('taken-uren-chart');
 
-const overigUren = getItemFromStorage('overig-uren');
+const overigUren = parseInt(getItemFromStorage('overig-uren'));
 
 if (overigUren) {
     config = {
