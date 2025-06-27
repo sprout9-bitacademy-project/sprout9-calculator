@@ -2,15 +2,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-    text-align: center;
+#demografie-chart-container {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 100px;
 }
 
-.vraagBlok {
-    display: flex;
-    flex-direction: column;
-}
-
-.vraagBlok label {
-    margin-top: 10px;
+#taken-uren-chart-container {
+    width: 600px;
+    margin-bottom: 100px;
 }

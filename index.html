@@ -4,193 +4,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impact calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sprout9|Calculator</title>
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
-    <div id="containerForm">
-    <h1>Sprout9 Impact calculator</h1>
-    <form action="index.html" method="post" id="impactCalculatorForm">
-        <section class="vraagBlok">
-            <h2>Wie ben jij?</h2>
-
-            <input type="text" name="voornaam" id="voornaam" placeholder="Voornaam">
-            <input type="text" name="achternaam" id="achternaam" placeholder="Achternaam">
-            <input type="text" name="bedrijf" id="bedrijf" placeholder="Bedrijf">
-            <input type="text" name="functie" id="functie" placeholder="Functie">
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold">Sprout9 Calculator</h1>
         </div>
+    </nav>
+    <div class="bg-white place-items-center p-6 rounded-lg shadow-md">
 
-        <section class="vraagBlok">
-            <h2>Personeelssituatie afdeling</h2>
+        <form id="calculator-form">
+            <div class="container place-items-center p-6">
+                <h2 class="text-xl font-semibold mb-4">Calculator</h2>
+                <p class="mb-4">Wie ben jij?</p>
 
-            <label for="personeel-loondienstFTE">FTE in loondienst</label>
-            <input type="number" name="personeel-loondienstFTE" id="personeel-loondienstFTE">
+                <div class="mb-4">
+                    <label for="voornaam" class="block text-gray-700">Voornaam</label>
+                    <input type="text" id="voornaam" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                        required>
+                </div>
 
-            <label for="personeel-flexibelFTE">FTE in flexibele schil</label>
-            <input type="number" name="personeel-flexibelFTE" id="personeel-flexibelFTE">
-
-            <label for="personeel-gemiddeldeUurloonFTE">Gemiddelde uurloon van werknemers in loondienst</label>
-            <input type="number" name="personeel-gemiddeldeUurloonFTE" id="personeel-gemiddeldeUurloonFTE">
-
-            <label for="personeel-gemiddeldeKostenFlexibel">Gemiddelde kosten per uur van flexibele schil</label>
-            <input type="number" name="personeel-gemiddeldeKostenFlexibel" id="personeel-gemiddeldeKostenFlexibel">
-
-        </div>
-
-        <section class="vraagBlok">
-            <h2>Demografie</h2>
-
-            <label for="demografie-dertigMinFTE">Aantal FTE jonger dan 30</label>
-            <input type="number" name="demografie-dertigMinFTE" id="demografie-dertigMinFTE">
-
-            <label for="demografie-dertigTotVijfEnVeertigFTE">Aantal FTE tussen 30-45</label>
-            <input type="number" name="demografie-dertigTotVijfEnVeertigFTE" id="demografie-dertigTotVijfEnVeertigFTE">
-
-            <label for="demografie-vijfEnVeertigTotZestigFTE">Aantal FTE tussen 45-60</label>
-            <input type="number" name="demografie-vijfEnVeertigTotZestigFTE" id="demografie-vijfEnVeertigTotZestigFTE">
-
-            <label for="demografie-zestigPlusFTE">Aantal FTE ouder dan 60</label>
-            <input type="number" name="demografie-zestigPlusFTE" id="demografie-zestigPlusFTE">
-        </div>
-
-        <section class="vraagBlok">
-            <h2>Taken op afdeling (in uren per week)</h2>
-            <h3>Contractbeheer</h3>
-
-            <label for="contracten-implementatie">Implementatie nieuwe contracten</label>
-            <input type="number" name="contracten-implementatie" id="contracten-implementatie">
-
-            <label for="contracten-beheerContracten">Beheer en onderhoud van contracten met leveranciers</label>
-            <input type="number" name="contracten-beheerContracten" id="contracten-beheerContracten">
-
-            <label for="contracten-dataAnalyseManagement">Contractdata-analyse en informatiemanagement</label>
-            <input type="number" name="contracten-dataAnalyseManagement" id="contracten-dataAnalyseManagement">
-        </div>
-
-        <section class="vraagBlok">
-            <h3>Inkoop</h3>
-
-            <label for="inkoop-controleren">Inkoopadministratie, bestellingen en inkooporders controleren</label>
-            <input type="number" name="inkoop-controleren" id="inkoop-controleren">
-
-            <label for="inkoop-kleineTrajecten">
-                Kleine inkooptrajecten, verwerving onderhandse gunningen en
-                marktbenadering
-            </label>
-            <input type="number" name="inkoop-kleineTrajecten" id="inkoop-kleineTrajecten">
-
-            <label for="inkoop-complexeTrajecten">
-                Complexe inkooptrajecten, Marktconsultaties, Europese
-                aanbestedingen.
-            </label>
-            <input type="number" name="inkoop-complexeTrajecten" id="inkoop-complexeTrajecten">
-
-        </div>
-
-        <section class="vraagBlok">
-            <h3>Leveranciersmanagement</h3>
-
-            <label for="leveranciers-relaties">Onderhouden van relaties met leverancier</label>
-            <input type="number" name="leveranciers-relaties" id="leveranciers-relaties">
-
-            <label for="leveranciers-nieuweLeveranciers">Evaluatie en selectie nieuwe leveranciers</label>
-            <input type="number" name="leveranciers-nieuweLeveranciers" id="leveranciers-nieuweLeveranciers">
-
-            <label for="leveranciers-monitorenLeveranciers">Monitoren van prestaties van leveranciers (KPI)</label>
-            <input type="number" name="leveranciers-monitorenLeveranciers" id="leveranciers-monitorenLeveranciers">
-        </div>
-
-        <section class="vraagBlok">
-            <h3>Facturatie / Boekhouding</h3>
-
-            <label for="facturatie-verwerkenFacturen">Verwerken van inkomende en uitgaande facturen</label>
-            <input type="number" name="facturatie-verwerkenFacturen" id="facturatie-verwerkenFacturen">
-
-            <label for="facturatie-boekenMonitorenCashflow">Boeken van betalingen en het monitoren van cashflow</label>
-            <input type="number" name="facturatie-boekenMonitorenCashflow" id="facturatie-boekenMonitorenCashflow">
-
-            <label for="facturatie-verwerkenCrediteurAdministratie">Verwerken van crediteuren en
-                debiteurenadministratie</label>
-            <input type="number" name="facturatie-verwerkenCrediteurAdministratie" id="facturatie-verwerkenCrediteurAdministratie">
-
-        </div>
-
-        <section class="vraagBlok">
-            <h3>Voorraadbeheer / Logistiek</h3>
-
-            <label for="logistiek-monitorenBestellenVoorraad">
-                Monitoren van voorraadniveaus en bestellen van
-                nieuwevoorraad
-            </label>
-            <input type="number" name="logistiek-monitorenBestellenVoorraad" id="logistiek-monitorenBestellenVoorraad">
-
-            <label for="logistiek-planningLeveringen">Logistieke planning en beheer van leveringen</label>
-            <input type="number" name="logistiek-planningLeveringen" id="logistiek-planningLeveringen">
-
-            <label for="logistiek-optimaliserenProcessen">Optimaliseren van voorraadprocessen</label>
-            <input type="number" name="logistiek-optimaliserenProcessen" id="logistiek-optimaliserenProcessen">
-
-        </div>
+                <div class="mb-4">
+                    <label for="achternaam" class="block text-gray-700">Achternaam</label>
+                    <input type="text" id="achternaam" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                        required>
+                </div>
 
 
-        <section class="vraagBlok">
-            <h3>Overig</h3>
+                <div class="mb-4">
+                    <label for="bedrijf" class="block text-gray-700">Bedrijf</label>
+                    <input type="text" id="bedrijf" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                        required>
+                </div>
 
-            <label for="overigBeschrijving">Overig, namelijk</label>
-            <input type="text" name="overigBeschrijving" id="overigBeschrijving">
+                <div class="mb-4">
+                    <label for="functie" class="block text-gray-700">Functie</label>
+                    <input type="text" id="functie" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                        required>
+                </div>
+                <div id="resultaat" class="mt-4 text-lg"> </div>
+            </div>
 
-            <label for="overigeUren">Aantal uren overig</label>
-            <input type="number" name="overigeUren" id="overigeUren">
+            <div class="container place-items-center p-6 mt-6">
+                <h2 class="text-xl font-semibold mb-4">Personeelssituatie</h2>
+                <div class="mb-4">
+                    <label for="fteInLoonDienst" class="block text-gray-700">FTE in loondienst</label>
+                    <input type="number" id="fteInLoonDienst"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <label for="fteInFlexibeleSchil" class="block text-gray-700"> FTE in flexibele schil </label>
+                    <input type="number" id="fteInFlexibeleSchil"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <label for="gemiddeldUurloon" class="block text-gray-700">Gemiddeld uurloon van werknemers in
+                        loondienst</label>
+                    <input type="number" id="gemiddeldUurloon"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                    <label for="gemiddeldKosten" class="block text-gray-700">Gemiddelde kosten per uur van flexibele
+                        schil</label>
+                    <input type="number" id="gemiddeldKosten"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
+            </div>
 
-        </div>
+            <div class="container place-items-center mt-6 p-6">
+                <h2 class="text-xl font-semibold mb-4">Demografie</h2>
 
-        <section class="vraagBlok">
-            <h2>Aannames</h2>
+                <div class="mb-4">
+                    <label for="aantalJongerDan30" class="block text-gray-700">Aantal jonger dan 30</label>
+                    <input type="number" id="aantalJongerDan30"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
 
-            <label for="aannames-vakantieGeld">Percentage vakantiegeld</label>
-            <input type="number" name="aannames-vakantieGeld" id="aannames-vakantieGeld" value="8">
+                <div class="mb-4">
+                    <label for="aantalTussen30-45" class="block text-gray-700">Aantal tussen 30-45</label>
+                    <input type="number" id="aantalTussen30-45"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
 
-            <label for="aannames-vakantieDagen">Vakantiedagen per jaar</label>
-            <input type="number" name="aannames-vakantieDagen" id="aannames-vakantieDagen" value="25">
+                <div class="mb-4">
+                    <label for="aantalTussen45-60" class="block text-gray-700">Aantal FTE tussen 45-60</label>
+                    <input type="number" id="aantalTussen45-60"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
 
-            <label for="aannames-dertiendeMaand">13e maand</label>
-            <input type="checkbox" name="aannames-dertiendeMaand" id="aannames-dertiendeMaand">
+                <div class="mb-4">
+                    <label for="aantalOuderDan60" class="block text-gray-700">Aantal FTE ouder dan 60</label>
+                    <input type="number" id="aantalOuderDan60"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+                </div>
 
-            <label for="aannames-jaarlijksVerloop">Jaarlijks verlooppercentage</label>
-            <input type="number" name="aannames-jaarlijksVerloop" id="aannames-jaarlijksVerloop" value="10">
+            </div>
 
-            <label for="aannames-verzuim">Verzuimpercentage</label>
-            <input type="number" name="aannames-verzuim" id="aannames-verzuim" value="6">
+            <div class="container place-items-center mt-6 p-6">
+                <h2 class="text-xl font-semibold mb-4">Taken op afdeling (in uren per week)</h2>
+                <h2 class="text-xl font-semibold mb-4 mt-6">Contractbeheer</h2>
 
-            <label for="aannames-recruitmentKosten">Recruitmentkosten als percentage van het jaarloon</label>
-            <input type="number" name="aannames-recruitmentKosten" id="aannames-recruitmentKosten" value="15">
+                <label for="implementatieNieuweContracten" class="block text-gray-700">Implementatie nieuwe
+                    contracten</label>
+                <input type="number" id="implementatieNieuweContracten"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-            <label for="aannames-urenFTE">Aantal uren in een FTE</label>
-            <input type="number" name="aannames-urenFTE" id="aannames-urenFTE" value="36">
-        </div>
+                <label for="beheerEnOnderhoudContractenLeveranciers" class="block text-gray-700">Beheer en onderhoud van
+                    bestaande contracten met leveranciers</label>
+                <input type="number" id="beheerEnOnderhoudContractenLeveranciers"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-        <section class="vraagBlok">
-            <h2>Waar mogen we de uitkomst heen sturen?</h2>
+                <label for="contractdataAnalyseEnInformatiemanagement" class="block text-gray-700">Contractdata-analyse
+                    en informatiemanagement</label>
+                <input type="number" id="contractdataAnalyseEnInformatiemanagement"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-            <input type="email" name="email" id="email" placeholder="Emailadres">
+                <h2 class="text-xl font-semibold mb-4 mt-6">Inkoop</h2>
 
-            <input type="tel" name="telefoonnummer" id="telefoonnummer" placeholder="Telefoonnummer">
+                <label for="inkoopadministratieBestellingenEnInkoopordersControleren"
+                    class="block text-gray-700">Inkoopadministratie, bestellingen en inkooporders controleren</label>
+                <input type="number" id="inkoopadministratieBestellingenEnInkoopordersControleren"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-            <label for="toestemmingAnalyse">
-                Sprout9 mag gebruik maken van jouw anonieme gegevens om een marktanalyse te maken. Bij akkoord delen we
-                deze met
-                jou, zodat je je kan vergelijken met de rest van onze respondenten.
-            </label>
-            <input type="checkbox" name="toestemmingAnalyse" id="toestemmingAnalyse" required>
+                <label for="kleineInkooptrajectenVerwervingOnderhandseGunningEnMarktbenadering"
+                    class="block text-gray-700">Kleine inkooptrajecten, verwerving onderhandse gunning en
+                    marktbenadering</label>
+                <input type="number" id="kleineInkooptrajectenVerwervingOnderhandseGunningEnMarktbenadering"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-        </div>
+                <label for="complexeInkooptrajectenMarktconsultatiesEuropeseAanbestedingen"
+                    class="block text-gray-700">Complexe inkooptrajecten, marktconsultaties en Europese
+                    aanbestedingen</label>
+                <input type="number" id="complexeInkooptrajectenMarktconsultatiesEuropeseAanbestedingen"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
 
-        <input type="submit" value="Verzenden">
-    </form>
-</div>
+                <h2 class="text-xl font-semibold mb-4 mt-6">Leveranciersmanagement</h2>
 
-<script src="script.js"></script>
+                <label for="onderhoudenVanRelatiesMetLeveranciers" class="block text-gray-700">Onderhouden van relaties
+                    met leveranciers</label>
+                <input type="number" id="onderhoudenVanRelatiesMetLeveranciers"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <label for="evaluatieSelectieNieuweLeveranciers" class="block text-gray-700">
+                    Evaluatie en selectie van nieuweleveranciers
+                </label>
+                <input type="number" id="evaluatieSelectieNieuweLeveranciers"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <label for="monitorenVanPrestatiesVanLeveranciers" class="block text-gray-700">Monitoren van prestaties
+                    van leveranciers (KPI)</label>
+                <input type="number" id="monitorenVanPrestatiesVanLeveranciers"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <h2 class="text-xl font-semibold mb-4 mt-6">Facturatie / Boekhouding</h2>
+
+                <label for="verwerkenVanInkomendeEnUitgaandeFacturen" class="block text-gray-700">Verwerken van
+                    inkomende en uitgaande facturen</label>
+                <input type="number" id="verwerkenVanInkomendeEnUitgaandeFacturen"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <label for="boekenVanBetalingenEnHetMonitorenVanCashflow" class="block text-gray-700">Boeken van
+                    betalingen en het monitoren van cashflow</label>
+                <input type="number" id="boekenVanBetalingenEnHetMonitorenVanCashflow"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <label for="verwerkenVanCrediturenEnDebiteurenadministratie" class="block text-gray-700">Verwerken van
+                    crediteuren en debiteurenadministratie</label>
+                <input type="number" id="verwerkenVanCrediturenEnDebiteurenadministratie"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+
+                <h2 class="text-xl font-semibold mb-4 mt-6">Voorraadbeheer / Logistiek</h2>
+
+                <label for="monitorenVanVoorraadniveausEnBestellemVanNieuweVoorraad"
+                    class="block text-gray-700">Monitoren van voorraadniveaus en bestellen van nieuwe voorraad</label>
+                <input type="number" id="monitorenVanVoorraadniveausEnBestellemVanNieuweVoorraad"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <label for="LogistiekePlanningEnBeheerVanLeveringen" class="block text-gray-700">Logistieke planning en
+                    beheer van leveringen</label>
+                <input type="number" id="LogistiekePlanningEnBeheerVanLeveringen"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+
+                <label for="optimaliserenVanVoorraadprocessen" class="block text-gray-700">Optimaliseren van
+                    voorraadprocessen</label>
+                <input type="number" id="optimaliserenVanVoorraadprocessen"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+            </div>
+
+            <div class="container place-items-center mt-6 p-6">
+                <h2 class="text-xl font-semibold mb-4">Overig</h2>
+
+                <label for="overig-namelijk" class="block text -gray-700">Overige taken (specificeer)</label>
+                <input type="text" id="overig-namelijk" class="mt-1 block w-full p-2 border border-gray-300 rounded">
+
+                <label for="overig-uren" class="block text-gray-700">Aantal uren overig</label>
+                <input type="number" id="overig-uren" class="mt-1 block w-full p-2 border border-gray-300 rounded">
+            </div>
+
+            <div class="container place-items-center mt-6 p-6">
+                <h2 class="text-xl font-semibold mb-4">Aannames</h2>
+                <div class="mb-4">
+
+                    <label for="checkbox-aannames" class="inline-flex items-center mt-2">
+                        <input type="checkbox" id="checkbox-aannames" class="form-checkbox h-5 w-5 text-blue-600">
+                        <span class="ml-2 text-gray-700">13e maand</span></label>
+
+                    <label for="percentageVakantiegeld" class="block text-gray-700">Percentage vakantegeld</label>
+                    <input type="number" id="percentageVakantiegeld"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="8" required>
+
+                    <label for="vakntiedagenPerJaar" class="block text-gray-700">Vakantiedagen per jaar</label>
+                    <input type="number" id="vakntiedagenPerJaar"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="25" required>
+
+                    <label for="jaarlijksVerlooppercentage" class="block text-gray-700 mt-4">Jaarlijks
+                        verlooppercentage</label>
+                    <input type="number" id="jaarlijksVerlooppercentage"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="10" required>
+
+                    <label for="verzuimpercentage" class="block text-gray-700 mt-4">Verzuimpercentage</label>
+                    <input type="number" id="verzuimpercentage"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="6" required>
+
+                    <label for="recruitmentkostenAlsPercentageVanHetJaarloon"
+                        class="block text-gray-700 mt-4">Recruitmentkosten als percentage van het jaarsalaris</label>
+                    <input type="number" id="recruitmentkostenAlsPercentageVanHetJaarloon"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="15" required>
+
+                    <label for="aantalUrenInEenFte" class="block text-gray-700 mt-4">Aantal uren in een FTE</label>
+                    <input type="number" id="aantalUrenInEenFte"
+                        class="mt-1 block w-full p-2 border border-gray-300 rounded" value="36" required>
+                </div>
+            </div>
+
+            <div class="container place-items-center mt-6 p-6">
+                <h1 class="text-xl font-semibold mb-4">Waar mogen wij de uitkomst heen sturen?</h2>
+                    <div id="resultaat" class="mt-4 text-lg">
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700">E-mailadres</label>
+                            <input type="email" id="email" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="telefoon" class="block text-gray-700">Telefoonnummer</label>
+                            <input type="tel" id="telefoon" class="mt-1 block w-full p-2 border border-gray-300 rounded"
+                                required>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" id="submit-form"
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Verzenden</button>
+        </form>
+        <button id="reset-button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">Reset</button>
+
+
+
+
+
+    </div>
+
 </body>
 
 </html>
