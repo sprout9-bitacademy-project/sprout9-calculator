@@ -126,10 +126,19 @@ setTimeout(() => {
     doc.text('Demografie', 10, 45);
     doc.setFontSize(10);
     doc.text(`Totaal personeel: ${totaalDemografie}`, 10, 51);
-    doc.text(`- Jonger dan 30: ${dertigMin || 0}`, 10, 57);
-    doc.text(`- 30-45: ${tussenDertigVijfEnVeertig}`, 10, 63);
-    doc.text(`- 45-60: ${tussenVijfEnVeertigZestig}`, 10, 69);
-    doc.text(`- 60+: ${zestigPlus}`, 10, 75);
+
+    const dertigMinPercentage = dertigMin / totaalDemografie * 100;
+    doc.text(`- Jonger dan 30: ${dertigMin} (${dertigMinPercentage.toFixed(1)}%)`, 10, 57);
+
+    const tussenDertigVijfEnVeertigPercentage = tussenDertigVijfEnVeertig / totaalDemografie * 100;
+    doc.text(`- 30-45: ${tussenDertigVijfEnVeertig} (${tussenDertigVijfEnVeertigPercentage.toFixed(1)}%)`, 10, 63);
+
+    const tussenVijfEnVeertigZestigPercentage = tussenVijfEnVeertigZestig / totaalDemografie * 100;
+    doc.text(`- 45-60: ${tussenVijfEnVeertigZestig} (${tussenVijfEnVeertigZestigPercentage.toFixed(1)}%)`, 10, 69);
+
+    const zestigPlusPercentage = zestigPlus / totaalDemografie * 100;
+    doc.text(`- 60+: ${zestigPlus} (${zestigPlusPercentage.toFixed(1)}%)`, 10, 75);
+
 
     // Demografie grafiek
     const imgDataDemografie = demografieChartCanvas.toDataURL('image/png');
