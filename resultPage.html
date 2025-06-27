@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprout9|Calculator</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script type="module" src="ResultPageChart.js" defer></script>
     <script type="module" src="resultPage.js" defer></script>
     <link rel="stylesheet" href="style.css">
@@ -27,13 +28,18 @@
     </div>
 
     <div id="taken-uren-chart-container">
-        <h2>Taken uren</h2>
+        <h2>Taken uren (per week)</h2>
         <canvas id="taken-uren-chart"></canvas>
         <div id="demografie-uitleg-container"></div>
     </div>
 
-    <button id="return-btn">Formulier opnieuw invullen</button>
-    <button id="create-pdf-btn">Genereer PDF</button>
+    <div id="contact">
+        <p>Heeft u behoefte aan extra informatie? Neem <a href="mailto:jelle.timmers@sprout9.nl">hier</a> contact op!</p>
+        <p>Of bezoek onze <a href="https://www.sprout9.nl/" target="_blank">site</a></p>
+        <button id="return-btn">Formulier opnieuw invullen</button>
+        <button id="create-pdf-btn">Genereer PDF</button>
+        <button id="save-pdf-btn">Sla PDF op</button>
+        </div>
 </body>
 
 </html>

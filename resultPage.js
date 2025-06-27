@@ -1,4 +1,5 @@
 import ResultPageChart from './ResultPageChart.js';
+const { jsPDF } = window.jspdf;
 
 function getItemFromStorage(itemName) {
     return localStorage.getItem(itemName);
@@ -25,7 +26,7 @@ const zestigPlus = parseInt(getItemFromStorage('aantalOuderDan60'));
 const totaalDemografie = sumFromStorage(['aantalJongerDan30', 'aantalTussen30-45', 'aantalTussen45-60', 'aantalOuderDan60']);
 
 // Chart variabelen
-let ctx = document.getElementById('demografie-chart');
+const demografieChartCanvas = document.getElementById('demografie-chart');
 let config = {
     type: 'pie',
     data: {
@@ -35,10 +36,15 @@ let config = {
             data: [zestigPlus, tussenVijfEnVeertigZestig, tussenDertigVijfEnVeertig, dertigMin],
             borderWidth: 1
         }]
+    },
+    options: {
+        animation: {
+            duration: 550
+        }
     }
 };
 
-const demografieChart = new ResultPageChart(ctx, config);
+const demografieChart = new ResultPageChart(demografieChartCanvas, config);
 demografieChart.plotChart();
 
 // Taken uren diagram
@@ -49,7 +55,7 @@ const facturatieBoekhoudingTotaal = sumFromStorage(['verwerkenVanInkomendeEnUitg
 const voorraadbeheerLogistiekTotaal = sumFromStorage(['monitorenVanVoorraadniveausEnBestellemVanNieuweVoorraad', 'LogistiekePlanningEnBeheerVanLeveringen', 'optimaliserenVanVoorraadprocessen']);
 
 // Chart variabelen
-ctx = document.getElementById('taken-uren-chart');
+const takenUrenChartCanvas = document.getElementById('taken-uren-chart');
 
 const overigUren = getItemFromStorage('overig-uren');
 
@@ -63,6 +69,11 @@ if (overigUren) {
                 data: [contractBeheerTotaal, inkoopTotaal, leveranciersmanagementTotaal, facturatieBoekhoudingTotaal, voorraadbeheerLogistiekTotaal, overigUren],
                 borderWidth: 1
             }]
+        },
+        options: {
+            animation: {
+                duration: 550
+            }
         }
     };
 } else {
@@ -79,7 +90,7 @@ if (overigUren) {
     };
 }
 
-const takenUrenChart = new ResultPageChart(ctx, config);
+const takenUrenChart = new ResultPageChart(takenUrenChartCanvas, config);
 takenUrenChart.plotChart();
 
 
@@ -92,24 +103,84 @@ returnButton.addEventListener(('click'), () => {
 
 
 // genereer pdf
+const doc = new jsPDF();
+const createPdfBtn = document.getElementById('create-pdf-btn');
 
+// Haal extra gegevens op uit localStorage
+const voornaam = getItemFromStorage('voornaam');
+const achternaam = getItemFromStorage('achternaam');
+const functie = getItemFromStorage('functie');
 
-// // Pak alle gegevens uit de localStorage
-// function allStorage() {
+// PDF inhoud v
+// Titel en bedrijfsgegevens
+setTimeout(() => {
+    doc.setFontSize(16);
+    doc.text(`Resultaten - ${bedrijfsNaam}`, 10, 10);
+    doc.setFontSize(10);
+    doc.text(`Naam: ${voornaam} ${achternaam}`, 10, 18);
+    doc.text(`Bedrijf: ${bedrijfsNaam}`, 10, 24);
+    doc.text(`Functie: ${functie}`, 10, 30);
 
-//     var archive = {}, // Notice change here
-//         keys = Object.keys(localStorage),
-//         i = keys.length;
+    // Demografie uitleg
+    doc.setFontSize(12);
+    doc.text('Demografie', 10, 45);
+    doc.setFontSize(10);
+    doc.text(`Totaal personeel: ${totaalDemografie}`, 10, 51);
+    doc.text(`- Jonger dan 30: ${dertigMin || 0}`, 10, 57);
+    doc.text(`- 30-45: ${tussenDertigVijfEnVeertig}`, 10, 63);
+    doc.text(`- 45-60: ${tussenVijfEnVeertigZestig}`, 10, 69);
+    doc.text(`- 60+: ${zestigPlus}`, 10, 75);
 
-//     while (i--) {
-//         archive[keys[i]] = localStorage.getItem(keys[i]);
-//     }
+    // Demografie grafiek
+    const imgDataDemografie = demografieChartCanvas.toDataURL('image/png');
+    let width = demografieChartCanvas.width / 8;
+    let height = demografieChartCanvas.height / 8;
+    doc.addImage(imgDataDemografie, 'PNG', 90, 25, width, height);
 
-//     return archive;
-// }
+    // Taken uren uitleg
+    doc.setFontSize(12);
+    doc.text('Taken uren', 10, 90);
+    doc.setFontSize(10);
+    doc.text(`Contractbeheer: ${contractBeheerTotaal} uur`, 10, 96);
+    doc.text(`Inkoop: ${inkoopTotaal} uur`, 10, 102);
+    doc.text(`Leveranciersmanagement: ${leveranciersmanagementTotaal} uur`, 10, 108);
+    doc.text(`Facturatie / Boekhouding: ${facturatieBoekhoudingTotaal} uur`, 10, 114);
+    doc.text(`Voorraadbeheer / Logistiek: ${voorraadbeheerLogistiekTotaal} uur`, 10, 120);
+    if (overigUren) {
+        doc.text(`Overig: ${overigUren} uur`, 10, 126);
+    }
 
-// const gegevens = allStorage();
-// // console.log(gegevens);
+    // Taken uren grafiek
+    const imgDataTakenUren = takenUrenChartCanvas.toDataURL('image/png');
+    width = takenUrenChartCanvas.width / 8;
+    height = takenUrenChartCanvas.height / 8;
+    doc.addImage(imgDataTakenUren, 'PNG', 30, 130, width, height);
 
-// gegevens.forEach(item => {
-// });
+    // Contact
+    doc.text(`Neem contact met ons op als u behoefte heeft aan meer informatie:`, 10, 250);
+    doc.text('Bezoek ', 10, 255);
+    doc.setTextColor(0, 0, 255);
+    doc.textWithLink('onze website', 23, 255, { url: "https://www.sprout9.nl/" });
+    doc.setTextColor(0, 0, 0);
+    doc.text('Mail ons: ', 10, 265);
+    doc.setTextColor(0, 0, 255);
+    doc.textWithLink('jelle.timmer@sprout9.nl', 25, 265, { url: 'mailto:jelle.timmer@sprout9.nl' });
+    doc.setTextColor(0, 0, 0);
+}, 600);
+
+// bestand opslaan
+createPdfBtn.addEventListener('click', () => {
+    // Open PDF in nieuw tabblad als blob-url
+    const pdfUrl = doc.output('bloburl');
+    window.open(pdfUrl, '_blank');
+});
+
+// sla pdf op
+const savePdfBtn = document.getElementById('save-pdf-btn');
+savePdfBtn.addEventListener(('click'), () => {
+    const bedrijfsNaamArray = bedrijfsNaam.split(' ');
+    const joinedBedrijfsNaam = bedrijfsNaamArray.join('-');
+    const fileName = `${joinedBedrijfsNaam}-sprout9-resultaat.pdf`;
+
+    doc.save(fileName);
+});
