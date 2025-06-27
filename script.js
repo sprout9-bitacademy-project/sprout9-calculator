@@ -6,20 +6,6 @@ function getItemFromStorage(itemName) {
     return localStorage.getItem(itemName);
 }
 
-document.getElementById('calculator-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const voornaam = document.getElementById('voornaam').value;
-    const achternaam = document.getElementById('achternaam').value;
-    const bedrijf = document.getElementById('bedrijf').value;
-    const functie = document.getElementById('functie').value;
-
-    const gegevens = { voornaam, achternaam, bedrijf, functie };
-    addItemToStorage('formulierGegevens', JSON.stringify(gegevens));
-
-    document.getElementById('resultaat').textContent = 'opgeslagen';
-});
-
 // Reset de formuliergegevens
 document.getElementById('reset-button').addEventListener('click', () => {
     localStorage.clear();
@@ -52,9 +38,13 @@ form.addEventListener('submit', function (e) {
 
     document.getElementById('submit-form').onclick = () => {
         if ((fteInLoonDienst + fteFlexibeleSchil) !== totaalDemografie) {
-            alert("Je aantal personeel onder het kopje 'personeelssituatie' en 'demografie' komen niet overeen. Zorg dat de gegevens gelijk zijn en ververs de pagina");
+            const alertMsg = `Je aantal personeel onder het kopje 'personeelssituatie' en 'demografie' komen niet overeen. Zorg dat het aantal personeel gelijk is.
+Totaal 'personeelssituatie': ${fteInLoonDienst + fteFlexibeleSchil}
+Totaal 'demografie': ${totaalDemografie}`;
+            alert(alertMsg);
             console.log(fteInLoonDienst + fteFlexibeleSchil);
             console.log(totaalDemografie);
+            location.reload();
         } else {
             if (getItemFromStorage('overig-namelijk') !== undefined || getItemFromStorage('overig-uren') == 0) {
                 window.location = 'resultPage.html';
