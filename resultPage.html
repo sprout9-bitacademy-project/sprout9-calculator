@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script type="module" src="ResultPageChart.js" defer></script>
     <script type="module" src="resultPage.js" defer></script>
+    <script type="module" src="generatePdf.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 </head>
@@ -21,6 +22,7 @@
     </nav> -->
     <!-- <div class="bg-white place-items-center p-6 rounded-lg shadow-md"> -->
     <h1 id="resultaten-h1">Resultaten</h1>
+    <p><a href="index.html">Wijzig gegevens</a></p>
     <div id="demografie-chart-container">
         <h2>Demografie</h2>
         <canvas id="demografie-chart"></canvas>
@@ -39,7 +41,7 @@
         <button id="return-btn">Formulier opnieuw invullen</button>
         <button id="create-pdf-btn">Genereer PDF</button>
         <button id="save-pdf-btn">Sla PDF op</button>
-        </div>
+    </div>
 </body>
 
 </html>
