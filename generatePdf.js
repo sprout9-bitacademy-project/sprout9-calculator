@@ -58,71 +58,54 @@ const overigUren = getItemFromStorage('overig-uren');
 
 // PDF inhoud v
 // Titel en bedrijfsgegevens
-setTimeout(() => {
-    doc.setFontSize(16);
-    doc.text(`Resultaten - ${bedrijfsNaam}`, 10, 10);
-    doc.setFontSize(10);
-    doc.text(`Naam: ${voornaam} ${achternaam}`, 10, 18);
-    doc.text(`Bedrijf: ${bedrijfsNaam}`, 10, 24);
-    doc.text(`Functie: ${functie}`, 10, 30);
+doc.setFontSize(16);
+doc.text(`Resultaten - ${bedrijfsNaam}`, 10, 10);
+doc.setFontSize(10);
+doc.text(`Naam: ${voornaam} ${achternaam}`, 10, 18);
+doc.text(`Bedrijf: ${bedrijfsNaam}`, 10, 24);
+doc.text(`Functie: ${functie}`, 10, 30);
 
-    // Demografie uitleg
-    doc.setFontSize(12);
-    doc.text('Demografie', 10, 45);
-    doc.setFontSize(10);
-    doc.text(`Totaal personeel: ${totaalDemografie}`, 10, 51);
+// Demografie uitleg
+doc.setFontSize(12);
+doc.text('Demografie', 10, 45);
+doc.setFontSize(10);
+doc.text(`Totaal personeel: ${totaalDemografie}`, 10, 51);
 
-    const dertigMinPercentage = dertigMin / totaalDemografie * 100;
-    doc.text(`- Jonger dan 30: ${dertigMin} (${dertigMinPercentage.toFixed(1)}%)`, 10, 57);
+const dertigMinPercentage = dertigMin / totaalDemografie * 100;
+doc.text(`- Jonger dan 30: ${dertigMin} (${dertigMinPercentage.toFixed(1)}%)`, 10, 57);
 
-    const tussenDertigVijfEnVeertigPercentage = tussenDertigVijfEnVeertig / totaalDemografie * 100;
-    doc.text(`- 30-45: ${tussenDertigVijfEnVeertig} (${tussenDertigVijfEnVeertigPercentage.toFixed(1)}%)`, 10, 63);
+const tussenDertigVijfEnVeertigPercentage = tussenDertigVijfEnVeertig / totaalDemografie * 100;
+doc.text(`- 30-45: ${tussenDertigVijfEnVeertig} (${tussenDertigVijfEnVeertigPercentage.toFixed(1)}%)`, 10, 63);
 
-    const tussenVijfEnVeertigZestigPercentage = tussenVijfEnVeertigZestig / totaalDemografie * 100;
-    doc.text(`- 45-60: ${tussenVijfEnVeertigZestig} (${tussenVijfEnVeertigZestigPercentage.toFixed(1)}%)`, 10, 69);
+const tussenVijfEnVeertigZestigPercentage = tussenVijfEnVeertigZestig / totaalDemografie * 100;
+doc.text(`- 45-60: ${tussenVijfEnVeertigZestig} (${tussenVijfEnVeertigZestigPercentage.toFixed(1)}%)`, 10, 69);
 
-    const zestigPlusPercentage = zestigPlus / totaalDemografie * 100;
-    doc.text(`- 60+: ${zestigPlus} (${zestigPlusPercentage.toFixed(1)}%)`, 10, 75);
+const zestigPlusPercentage = zestigPlus / totaalDemografie * 100;
+doc.text(`- 60+: ${zestigPlus} (${zestigPlusPercentage.toFixed(1)}%)`, 10, 75);
 
+// Taken uren uitleg
+doc.setFontSize(12);
+doc.text('Taken op afdeling (in uren per week)', 10, 90);
+doc.setFontSize(10);
+doc.text(`Contractbeheer: ${contractBeheerTotaal} uur`, 10, 96);
+doc.text(`Inkoop: ${inkoopTotaal} uur`, 10, 102);
+doc.text(`Leveranciersmanagement: ${leveranciersmanagementTotaal} uur`, 10, 108);
+doc.text(`Facturatie / Boekhouding: ${facturatieBoekhoudingTotaal} uur`, 10, 114);
+doc.text(`Voorraadbeheer / Logistiek: ${voorraadbeheerLogistiekTotaal} uur`, 10, 120);
+if (overigUren) {
+    doc.text(`Overig: ${overigUren} uur`, 10, 126);
+}
 
-    // // Demografie grafiek
-    // const demografieChartCanvas = document.getElementById('demografie-chart');
-    // const imgDataDemografie = demografieChartCanvas.toDataURL('image/png');
-    // let width = demografieChartCanvas.width / 8;
-    // let height = demografieChartCanvas.height / 8;
-    // doc.addImage(imgDataDemografie, 'PNG', 90, 25, width, height);
-
-    // Taken uren uitleg
-    doc.setFontSize(12);
-    doc.text('Taken op afdeling (in uren per week)', 10, 90);
-    doc.setFontSize(10);
-    doc.text(`Contractbeheer: ${contractBeheerTotaal} uur`, 10, 96);
-    doc.text(`Inkoop: ${inkoopTotaal} uur`, 10, 102);
-    doc.text(`Leveranciersmanagement: ${leveranciersmanagementTotaal} uur`, 10, 108);
-    doc.text(`Facturatie / Boekhouding: ${facturatieBoekhoudingTotaal} uur`, 10, 114);
-    doc.text(`Voorraadbeheer / Logistiek: ${voorraadbeheerLogistiekTotaal} uur`, 10, 120);
-    if (overigUren) {
-        doc.text(`Overig: ${overigUren} uur`, 10, 126);
-    }
-
-    // // Taken uren grafiek
-    // const takenUrenChartCanvas = document.getElementById('taken-uren-chart');
-    // const imgDataTakenUren = takenUrenChartCanvas.toDataURL('image/png');
-    // width = takenUrenChartCanvas.width / 8;
-    // height = takenUrenChartCanvas.height / 8;
-    // doc.addImage(imgDataTakenUren, 'PNG', 30, 130, width, height);
-
-    // Contact
-    doc.text(`Neem contact met ons op als u behoefte heeft aan meer informatie:`, 10, 250);
-    doc.text('Bezoek ', 10, 255);
-    doc.setTextColor(0, 0, 255);
-    doc.textWithLink('onze website', 23, 255, { url: "https://www.sprout9.nl/" });
-    doc.setTextColor(0, 0, 0);
-    doc.text('Mail ons: ', 10, 265);
-    doc.setTextColor(0, 0, 255);
-    doc.textWithLink('jelle.timmer@sprout9.nl', 25, 265, { url: 'mailto:jelle.timmer@sprout9.nl' });
-    doc.setTextColor(0, 0, 0);
-}, 600);
+// Contact
+doc.text(`Neem contact met ons op als u behoefte heeft aan meer informatie:`, 10, 250);
+doc.text('Bezoek ', 10, 255);
+doc.setTextColor(0, 0, 255);
+doc.textWithLink('onze website', 23, 255, { url: "https://www.sprout9.nl/" });
+doc.setTextColor(0, 0, 0);
+doc.text('Mail ons: ', 10, 265);
+doc.setTextColor(0, 0, 255);
+doc.textWithLink('jelle.timmer@sprout9.nl', 25, 265, { url: 'mailto:jelle.timmer@sprout9.nl' });
+doc.setTextColor(0, 0, 0);
 
 createPdfBtn.addEventListener('click', () => {
     addChartsToPdf(doc);
