@@ -12,6 +12,26 @@ function sumFromStorage(array) {
     return sum;
 }
 
+function addChartsToPdf(doc) {
+    // Demografie grafiek
+    const demografieChartCanvas = document.getElementById('demografie-chart');
+    if (demografieChartCanvas) {
+        const imgDataDemografie = demografieChartCanvas.toDataURL('image/png');
+        let width = demografieChartCanvas.width / 8;
+        let height = demografieChartCanvas.height / 8;
+        doc.addImage(imgDataDemografie, 'PNG', 90, 25, width, height);
+    }
+
+    // Taken uren grafiek
+    const takenUrenChartCanvas = document.getElementById('taken-uren-chart');
+    if (takenUrenChartCanvas) {
+        const imgDataTakenUren = takenUrenChartCanvas.toDataURL('image/png');
+        let width = takenUrenChartCanvas.width / 8;
+        let height = takenUrenChartCanvas.height / 8;
+        doc.addImage(imgDataTakenUren, 'PNG', 30, 130, width, height);
+    }
+}
+
 // genereer pdf
 const doc = new jsPDF();
 const createPdfBtn = document.getElementById('create-pdf-btn');
@@ -65,12 +85,12 @@ setTimeout(() => {
     doc.text(`- 60+: ${zestigPlus} (${zestigPlusPercentage.toFixed(1)}%)`, 10, 75);
 
 
-    // Demografie grafiek
-    const demografieChartCanvas = document.getElementById('demografie-chart');
-    const imgDataDemografie = demografieChartCanvas.toDataURL('image/png');
-    let width = demografieChartCanvas.width / 8;
-    let height = demografieChartCanvas.height / 8;
-    doc.addImage(imgDataDemografie, 'PNG', 90, 25, width, height);
+    // // Demografie grafiek
+    // const demografieChartCanvas = document.getElementById('demografie-chart');
+    // const imgDataDemografie = demografieChartCanvas.toDataURL('image/png');
+    // let width = demografieChartCanvas.width / 8;
+    // let height = demografieChartCanvas.height / 8;
+    // doc.addImage(imgDataDemografie, 'PNG', 90, 25, width, height);
 
     // Taken uren uitleg
     doc.setFontSize(12);
@@ -85,12 +105,12 @@ setTimeout(() => {
         doc.text(`Overig: ${overigUren} uur`, 10, 126);
     }
 
-    // Taken uren grafiek
-    const takenUrenChartCanvas = document.getElementById('taken-uren-chart');
-    const imgDataTakenUren = takenUrenChartCanvas.toDataURL('image/png');
-    width = takenUrenChartCanvas.width / 8;
-    height = takenUrenChartCanvas.height / 8;
-    doc.addImage(imgDataTakenUren, 'PNG', 30, 130, width, height);
+    // // Taken uren grafiek
+    // const takenUrenChartCanvas = document.getElementById('taken-uren-chart');
+    // const imgDataTakenUren = takenUrenChartCanvas.toDataURL('image/png');
+    // width = takenUrenChartCanvas.width / 8;
+    // height = takenUrenChartCanvas.height / 8;
+    // doc.addImage(imgDataTakenUren, 'PNG', 30, 130, width, height);
 
     // Contact
     doc.text(`Neem contact met ons op als u behoefte heeft aan meer informatie:`, 10, 250);
@@ -104,8 +124,9 @@ setTimeout(() => {
     doc.setTextColor(0, 0, 0);
 }, 600);
 
-// bestand opslaan
 createPdfBtn.addEventListener('click', () => {
+    addChartsToPdf(doc);
+
     // Open PDF in nieuw tabblad als blob-url
     const pdfUrl = doc.output('bloburl');
     window.open(pdfUrl, '_blank');
@@ -113,10 +134,11 @@ createPdfBtn.addEventListener('click', () => {
 
 // sla pdf op
 const savePdfBtn = document.getElementById('save-pdf-btn');
-savePdfBtn.addEventListener(('click'), () => {
+savePdfBtn.addEventListener('click', () => {
+    addChartsToPdf(doc);
+
     const bedrijfsNaamArray = bedrijfsNaam.split(' ');
     const joinedBedrijfsNaam = bedrijfsNaamArray.join('-');
     const fileName = `${joinedBedrijfsNaam}-sprout9-resultaat.pdf`;
-
     doc.save(fileName);
 });
