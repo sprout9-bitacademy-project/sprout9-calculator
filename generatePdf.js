@@ -74,7 +74,7 @@ setTimeout(() => {
 
     // Taken uren uitleg
     doc.setFontSize(12);
-    doc.text('Taken uren', 10, 90);
+    doc.text('Taken op afdeling (in uren per week)', 10, 90);
     doc.setFontSize(10);
     doc.text(`Contractbeheer: ${contractBeheerTotaal} uur`, 10, 96);
     doc.text(`Inkoop: ${inkoopTotaal} uur`, 10, 102);
