@@ -122,6 +122,6 @@ savePdfBtn.addEventListener('click', () => {
 
     const bedrijfsNaamArray = bedrijfsNaam.split(' ');
     const joinedBedrijfsNaam = bedrijfsNaamArray.join('-');
-    const fileName = `${joinedBedrijfsNaam}-sprout9-resultaat.pdf`;
+    const fileName = `${joinedBedrijfsNaam.toLowerCase()}-sprout9-resultaat.pdf`;
     doc.save(fileName);
 });
